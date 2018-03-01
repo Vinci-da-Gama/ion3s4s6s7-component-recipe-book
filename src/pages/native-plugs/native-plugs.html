@@ -1,0 +1,33 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>
+			native-plugs
+		</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-card>
+		<ion-card-header>
+			Current Location:
+		</ion-card-header>
+		<ion-card-content>
+			<ion-row>
+				<ion-col class="col-6">
+					{{currentLocation.latitude}}
+				</ion-col>
+				<ion-col class="col-6">
+					{{currentLocation.longitude}}
+				</ion-col>
+			</ion-row>
+		</ion-card-content>
+	</ion-card>
+</ion-content>
+
+<!-- <ion-footer>
+	<button ion-button block>
+		Go Recipes
+	</button>
+</ion-footer> -->
