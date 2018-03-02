@@ -1,1 +1,27 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<!-- <ion-nav [root]="rootPage"></ion-nav> -->
+<ion-menu [content]="appMenuNavContent">
+	<ion-header>
+		<ion-toolbar>
+			<ion-title>
+				haha
+			</ion-title>
+		</ion-toolbar>
+	</ion-header>
+	<ion-content>
+		<ion-list>
+			<button ion-item (click)="onLoadPage(recipesPage)">
+				<ion-icon name="settings" item-left></ion-icon>
+				Recipes-Book
+			</button>
+			<button ion-item (click)="onLoadPage(nativePlugsPage)">
+				<ion-icon name="play" item-left></ion-icon>
+				Native Plugings
+			</button>
+			<button ion-item (click)="onLoadPage(compsPage)">
+				<ion-icon name="calendar" item-left></ion-icon>
+				Component Feature
+			</button>
+		</ion-list>
+	</ion-content>
+</ion-menu>
+<ion-nav #appMenuNavContent [root]="tabsPage"></ion-nav>

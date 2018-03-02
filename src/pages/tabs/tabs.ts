@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, Tabs } from 'ionic-angular';
 
 import { RecipeBookPage } from '../recipe-book/recipe-book';
 import { NativePlugsPage } from '../native-plugs/native-plugs';
@@ -11,7 +11,9 @@ import { componentFactoryName } from '@angular/compiler';
 	templateUrl: 'tabs.html',
 })
 export class TabsPage {
-	private defIdx: Number = 1;
+	// private defIdx: Number = 2;
+	@ViewChild('hashTabs') tabRef: Tabs;
+
 	private recipePage: any = RecipeBookPage;
 	private nativePluginsPage: any = NativePlugsPage;
 	private compPage: any = ComponentsFeaturePage;
@@ -21,7 +23,8 @@ export class TabsPage {
 	) { }
 
 	ionViewDidLoad() {
-		console.log('ionViewDidLoad TabsPage');
+		console.log('2nd way to choose init selected tab');
+		this.tabRef.select(1);
 	}
 
 }

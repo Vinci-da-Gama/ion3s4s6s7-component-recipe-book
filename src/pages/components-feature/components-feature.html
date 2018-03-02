@@ -1,10 +1,146 @@
 <ion-header>
 	<ion-navbar>
-		<ion-title>components-feature</ion-title>
+		<rightmenu-button></rightmenu-button>
+		<ion-title>
+			components-feature
+		</ion-title>
 	</ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-
+	<ion-item-group>
+		<ion-list-header>
+			Ion Item Group
+		</ion-list-header>
+		<ion-item-divider color="light">A</ion-item-divider>
+		<ion-item>
+			<ion-icon name="leaf"></ion-icon>
+			Leaf
+		</ion-item>
+		<ion-item>
+			<ion-icon name="rose"></ion-icon>
+			Rose
+		</ion-item>
+		<ion-item-divider color="light">B</ion-item-divider>
+		<ion-item>
+			<ion-icon name="mail"></ion-icon>
+			Mail
+		</ion-item>
+		<ion-item>
+			<ion-icon name="text"></ion-icon>
+			Text
+		</ion-item>
+	</ion-item-group>
+	<grid-comps></grid-comps>
+	<ion-fab top right edge>
+		<button ion-fab mini>
+			<ion-icon name="add"></ion-icon>
+		</button>
+		<ion-fab-list>
+			<button ion-fab>
+				<ion-icon name="logo-facebook"></ion-icon>
+			</button>
+			<button ion-fab>
+				<ion-icon name="logo-twitter"></ion-icon>
+			</button>
+			<button ion-fab>
+				<ion-icon name="logo-vimeo"></ion-icon>
+			</button>
+			<button ion-fab>
+				<ion-icon name="logo-googleplus"></ion-icon>
+			</button>
+		</ion-fab-list>
+	</ion-fab>
+	<ion-fab right bottom>
+		<button ion-fab color="light">
+			<ion-icon name="arrow-dropleft"></ion-icon>
+		</button>
+		<ion-fab-list side="left">
+			<button ion-fab>
+				<ion-icon name="logo-facebook"></ion-icon>
+			</button>
+			<button ion-fab>
+				<ion-icon name="logo-twitter"></ion-icon>
+			</button>
+			<button ion-fab>
+				<ion-icon name="logo-vimeo"></ion-icon>
+			</button>
+			<button ion-fab>
+				<ion-icon name="logo-googleplus"></ion-icon>
+			</button>
+		</ion-fab-list>
+	</ion-fab>
+	<ion-fab center middle>
+		<button ion-fab color="danger">
+			<ion-icon name="close"></ion-icon>
+		</button>
+		<ion-fab-list side="top">
+			<button ion-fab color="primary">
+				<ion-icon name="at"></ion-icon>
+			</button>
+		</ion-fab-list>
+		<ion-fab-list side="right">
+			<button ion-fab color="secondary">
+				<ion-icon name="baseball"></ion-icon>
+			</button>
+		</ion-fab-list>
+		<ion-fab-list side="bottom">
+			<button ion-fab color="light">
+				<ion-icon name="beaker"></ion-icon>
+			</button>
+		</ion-fab-list>
+		<ion-fab-list side="left">
+			<button ion-fab color="orange-deep">
+				<ion-icon name="boat"></ion-icon>
+			</button>
+		</ion-fab-list>
+	</ion-fab>
+	<ion-card (tap)="onGesture($event)">
+		<ion-card-header>
+			Tapped: {{tabTimes}} times
+		</ion-card-header>
+		<ion-card-content>
+			tap gesture (touch or click)
+		</ion-card-content>
+	</ion-card>
+	<ion-card (press)="onGesture($event)">
+		<ion-card-header>
+			Pressed: {{pressTimes}} times
+		</ion-card-header>
+		<ion-card-content>
+			press gesture (three fingers hold a while)
+		</ion-card-content>
+	</ion-card>
+	<ion-card (pan)="onGesture($event)">
+		<ion-card-header>
+			Paned: {{panTimes}} times
+		</ion-card-header>
+		<ion-card-content>
+			pan gesture (three fingers drag left or right)
+		</ion-card-content>
+	</ion-card>
+	<ion-card (swipe)="onGesture($event)">
+		<ion-card-header>
+			Swiped: {{swipeTimes}} times
+		</ion-card-header>
+		<ion-card-content>
+			swipe gesture (three fingers slide left out screen)
+		</ion-card-content>
+	</ion-card>
+	<ion-card (rotate)="onGesture($event)">
+		<ion-card-header>
+			Rotated: {{rotateTimes}} times
+		</ion-card-header>
+		<ion-card-content>
+			rotate gesture (donot know what is this gestrue)
+		</ion-card-content>
+	</ion-card>
+	<ion-card (pinch)="onGesture($event)">
+		<ion-card-header>
+			Pinched: {{pinchTimes}} times
+		</ion-card-header>
+		<ion-card-content>
+			pinch gesture (donot know what is this gestrue)
+		</ion-card-content>
+	</ion-card>
 </ion-content>

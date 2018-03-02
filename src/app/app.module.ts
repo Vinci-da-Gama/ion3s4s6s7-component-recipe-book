@@ -16,7 +16,8 @@ import { RecipeBookPage } from '../pages/recipe-book/recipe-book';
 import { NativePlugsPage } from '../pages/native-plugs/native-plugs';
 import { ComponentsFeaturePage } from '../pages/components-feature/components-feature';
 
-import { RightSideMenuDirective } from '../shared/directives/right-side-menu/right-side-menu';
+import { RightmenuButtonDirective } from '../shared/directives/rightmenu-button/rightmenu-button';
+import { GridComps } from '../shared/directives/grid-comps/grid-comps';
 
 @NgModule({
 	declarations: [
@@ -25,7 +26,8 @@ import { RightSideMenuDirective } from '../shared/directives/right-side-menu/rig
 		RecipeBookPage,
 		NativePlugsPage,
 		ComponentsFeaturePage,
-		RightSideMenuDirective
+		RightmenuButtonDirective,
+		GridComps
 	],
 	imports: [
 		BrowserModule,
