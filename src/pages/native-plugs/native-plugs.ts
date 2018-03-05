@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Camera } from '@ionic-native/camera';
 import { File, Entry, FileError } from '@ionic-native/file';
-import { RecipeBookPage } from '../recipe-book/recipe-book';
+import { RecipesTabsSubrootPage } from '../recipes-tabs-subroot/recipes-tabs-subroot';
 
 @Component({
 	selector: 'page-native-plugs',
@@ -49,16 +49,16 @@ export class NativePlugsPage {
 			.then((res) => {
 				console.log(res);
 			})
-			.catch((err) => console.log('52 -- camera err: ', err));
+			.catch((err) => console.log('camera err: ', err));
 	}
 
 	doHaveLogo() {
 		const logoPath = `../../assets/imgs/`;
 		const fileName = `logo.png`;
-		console.log('58 -- check log png. File and Camera must test in Device, Browser doesnot has cordova.');
+		console.log('check log png. File and Camera must test in Device, Browser doesnot has cordova.');
 		this.file.checkFile(logoPath, fileName)
 			.then((res) => {
-				console.log(res);
+				console.log('61 -- do have logo -- ', res);
 			})
 			.catch((err) => console.log(err));
 	}

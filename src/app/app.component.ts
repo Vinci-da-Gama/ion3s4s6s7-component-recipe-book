@@ -3,10 +3,8 @@ import { Platform, NavController, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { TabsPage } from '../pages/tabs/tabs';
-import { RecipeBookPage } from '../pages/recipe-book/recipe-book';
-import { NativePlugsPage } from '../pages/native-plugs/native-plugs';
-import { ComponentsFeaturePage } from '../pages/components-feature/components-feature';
+import { CompoNativeTabsPage } from '../pages/compo-native-tabs/compo-native-tabs';
+import { RecipesTabsSubrootPage } from '../pages/recipes-tabs-subroot/recipes-tabs-subroot';
 
 @Component({
 	templateUrl: 'app.html'
@@ -14,10 +12,8 @@ import { ComponentsFeaturePage } from '../pages/components-feature/components-fe
 export class ComponentsRceipeBook {
 
 	@ViewChild('appMenuNavContent') nav: NavController;
-	private tabsPage: any = TabsPage;
-	private recipesPage: any = RecipeBookPage;
-	private nativePlugsPage: any = NativePlugsPage;
-	private compsPage: any = ComponentsFeaturePage;
+	private compoNatiPlugPage: any = CompoNativeTabsPage;
+	private recipesPage: any = RecipesTabsSubrootPage;
 
 	constructor(
 		private platform: Platform,
@@ -38,4 +34,3 @@ export class ComponentsRceipeBook {
 		this.menuCtrl.close();
 	}
 }
-

@@ -3,7 +3,7 @@
 	<ion-header>
 		<ion-toolbar>
 			<ion-title>
-				haha
+				wuhaha...
 			</ion-title>
 		</ion-toolbar>
 	</ion-header>
@@ -13,15 +13,15 @@
 				<ion-icon name="settings" item-left></ion-icon>
 				Recipes-Book
 			</button>
-			<button ion-item (click)="onLoadPage(nativePlugsPage)">
+			<button ion-item (click)="onLoadPage(compoNatiPlugPage)">
 				<ion-icon name="play" item-left></ion-icon>
 				Native Plugings
 			</button>
-			<button ion-item (click)="onLoadPage(compsPage)">
-				<ion-icon name="calendar" item-left></ion-icon>
-				Component Feature
-			</button>
+			<!-- <button ion-item (click)="onLoadPage(nativePlugsPage)">
+				<ion-icon name="play" item-left></ion-icon>
+				Native Plugings
+			</button> -->
 		</ion-list>
 	</ion-content>
 </ion-menu>
-<ion-nav #appMenuNavContent [root]="tabsPage"></ion-nav>
+<ion-nav #appMenuNavContent [root]="compoNatiPlugPage"></ion-nav>

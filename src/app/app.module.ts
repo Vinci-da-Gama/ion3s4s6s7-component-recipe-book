@@ -11,10 +11,17 @@ import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 
 import { ComponentsRceipeBook } from './app.component';
-import { TabsPage } from '../pages/tabs/tabs';
-import { RecipeBookPage } from '../pages/recipe-book/recipe-book';
+import { RecipesTabsSubrootPage } from '../pages/recipes-tabs-subroot/recipes-tabs-subroot';
 import { NativePlugsPage } from '../pages/native-plugs/native-plugs';
 import { ComponentsFeaturePage } from '../pages/components-feature/components-feature';
+
+import { CompoNativeTabsPage } from '../pages/compo-native-tabs/compo-native-tabs';
+import { CnpTabsPage } from '../pages/cnp-tabs/cnp-tabs';
+import { RecipeTabsPage } from '../pages/recipe-tabs/recipe-tabs';
+import { ShoppingListPage } from '../pages/shopping-list/shopping-list';
+import { RecipesPage } from '../pages/recipes/recipes';
+import { RecipeDetailsPage } from '../pages/recipe-details/recipe-details';
+import { EditRecipePage } from '../pages/edit-recipe/edit-recipe';
 
 import { RightmenuButtonDirective } from '../shared/directives/rightmenu-button/rightmenu-button';
 import { GridComps } from '../shared/directives/grid-comps/grid-comps';
@@ -22,10 +29,16 @@ import { GridComps } from '../shared/directives/grid-comps/grid-comps';
 @NgModule({
 	declarations: [
 		ComponentsRceipeBook,
-		TabsPage,
-		RecipeBookPage,
+		RecipesTabsSubrootPage,
 		NativePlugsPage,
 		ComponentsFeaturePage,
+		CompoNativeTabsPage,
+		CnpTabsPage,
+		RecipeTabsPage,
+		ShoppingListPage,
+		RecipesPage,
+		RecipeDetailsPage,
+		EditRecipePage,
 		RightmenuButtonDirective,
 		GridComps
 	],
@@ -37,10 +50,16 @@ import { GridComps } from '../shared/directives/grid-comps/grid-comps';
 	bootstrap: [IonicApp],
 	entryComponents: [
 		ComponentsRceipeBook,
-		TabsPage,
-		RecipeBookPage,
+		RecipesTabsSubrootPage,
 		NativePlugsPage,
-		ComponentsFeaturePage
+		ComponentsFeaturePage,
+		CompoNativeTabsPage,
+		CnpTabsPage,
+		RecipeTabsPage,
+		ShoppingListPage,
+		RecipesPage,
+		RecipeDetailsPage,
+		EditRecipePage
 	],
 	providers: [
 		StatusBar,
