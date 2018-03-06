@@ -1,9 +1,32 @@
 <ion-header>
 	<ion-navbar>
+		<rightmenu-button></rightmenu-button>
 		<ion-title>shopping-list</ion-title>
 	</ion-navbar>
 </ion-header>
 
 <ion-content padding>
-	shopping list...
+	<form novalidate #slform="ngForm" (ngSubmit)="onAddIngredient(slform)">
+		<ion-list>
+			<ion-item>
+				<ion-label fixed color="primary">
+					<ion-icon ios="ios-cloud" md="md-cloud"></ion-icon>
+					Name
+				</ion-label>
+				<ion-input type="text" name="ingredientName" placeholer="Milk" ngModel required>
+				</ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label fixed color="primary">
+					<ion-icon ios="ios-cog" md="md-cog"></ion-icon>
+					Amount
+				</ion-label>
+				<ion-input type="number" name="ingredientAmt" placeholder="Amount" ngModel required>
+				</ion-input>
+			</ion-item>
+		</ion-list>
+		<button ion-button block [disabled]="!slform.valid" type="submit">
+			Add Ingredient
+		</button>
+	</form>
 </ion-content>

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { APP_BASE_HREF } from '@angular/common';
 
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -25,6 +26,7 @@ import { EditRecipePage } from '../pages/edit-recipe/edit-recipe';
 
 import { RightmenuButtonDirective } from '../shared/directives/rightmenu-button/rightmenu-button';
 import { GridComps } from '../shared/directives/grid-comps/grid-comps';
+import { FormProvider } from '../shared/providers/form-provider';
 
 @NgModule({
 	declarations: [
@@ -44,8 +46,9 @@ import { GridComps } from '../shared/directives/grid-comps/grid-comps';
 	],
 	imports: [
 		BrowserModule,
+		HttpModule,
+		HttpClientModule,
 		IonicModule.forRoot(ComponentsRceipeBook),
-		HttpModule
 	],
 	bootstrap: [IonicApp],
 	entryComponents: [
@@ -68,7 +71,8 @@ import { GridComps } from '../shared/directives/grid-comps/grid-comps';
 		Camera,
 		File,
 		{ provide: APP_BASE_HREF, useValue: '/' },
-		{ provide: ErrorHandler, useClass: IonicErrorHandler }
+		{ provide: ErrorHandler, useClass: IonicErrorHandler },
+		FormProvider
 	]
 })
 export class AppModule { }

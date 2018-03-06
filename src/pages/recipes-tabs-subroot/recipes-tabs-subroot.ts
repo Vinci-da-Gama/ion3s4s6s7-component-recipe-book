@@ -18,6 +18,7 @@ export class RecipesTabsSubrootPage {
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad RecipesTabsSubrootPage');
+		console.log('21 -- ', this.navCtrl.getActive().name);
 	}
 
 }

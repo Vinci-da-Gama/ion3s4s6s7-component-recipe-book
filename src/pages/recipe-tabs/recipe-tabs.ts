@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, NavParams, Tabs } from 'ionic-angular';
 
 import { ShoppingListPage } from '../shopping-list/shopping-list';
 import { RecipesPage } from '../recipes/recipes';
@@ -10,6 +10,7 @@ import { RecipesPage } from '../recipes/recipes';
 })
 export class RecipeTabsPage {
 
+	@ViewChild('recipesTabs') recipeTabsRef: Tabs
 	private slPage: any = ShoppingListPage;
 	private recipesPage: any = RecipesPage;
 
@@ -20,6 +21,7 @@ export class RecipeTabsPage {
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad RecipeTabsPage');
+		this.recipeTabsRef.select(0);
 	}
 
 }
