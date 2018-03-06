@@ -27,6 +27,7 @@ import { EditRecipePage } from '../pages/edit-recipe/edit-recipe';
 import { RightmenuButtonDirective } from '../shared/directives/rightmenu-button/rightmenu-button';
 import { GridComps } from '../shared/directives/grid-comps/grid-comps';
 import { FormProvider } from '../shared/providers/form-provider';
+import { ShoppinglistProvider } from '../shared/providers/shoppinglist-provider';
 
 @NgModule({
 	declarations: [
@@ -72,7 +73,8 @@ import { FormProvider } from '../shared/providers/form-provider';
 		File,
 		{ provide: APP_BASE_HREF, useValue: '/' },
 		{ provide: ErrorHandler, useClass: IonicErrorHandler },
-		FormProvider
+		FormProvider,
+		ShoppinglistProvider
 	]
 })
 export class AppModule { }
