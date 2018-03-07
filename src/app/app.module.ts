@@ -28,6 +28,7 @@ import { RightmenuButtonDirective } from '../shared/directives/rightmenu-button/
 import { GridComps } from '../shared/directives/grid-comps/grid-comps';
 import { FormProvider } from '../shared/providers/form-provider';
 import { ShoppinglistProvider } from '../shared/providers/shoppinglist-provider';
+import { RecipesProvider } from '../shared/providers/recipes-provider';
 
 @NgModule({
 	declarations: [
@@ -74,7 +75,8 @@ import { ShoppinglistProvider } from '../shared/providers/shoppinglist-provider'
 		{ provide: APP_BASE_HREF, useValue: '/' },
 		{ provide: ErrorHandler, useClass: IonicErrorHandler },
 		FormProvider,
-		ShoppinglistProvider
+		ShoppinglistProvider,
+		RecipesProvider
 	]
 })
 export class AppModule { }

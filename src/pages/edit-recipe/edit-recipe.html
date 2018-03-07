@@ -1,10 +1,41 @@
 <ion-header>
 	<ion-navbar>
-		<ion-title>edit-recipe</ion-title>
+		<ion-title>{{editMode}}-recipe</ion-title>
 	</ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-
+	<form novalidate [formGroup]="recipeForm" (ngSubmit)="onRecipeSubmit()">
+		<ion-list>
+			<ion-item>
+				<ion-label floating>Title</ion-label>
+				<ion-input type="text" formControlName="title" required></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>Description</ion-label>
+				<ion-textarea formControlName="description" required></ion-textarea>
+			</ion-item>
+			<ion-item>
+				<ion-label floating></ion-label>
+				<ion-select formControlName="difficulty" required>
+					<ion-option *ngFor="let opt of selectOptions; let i = index" [value]="opt">
+						{{opt}}
+					</ion-option>
+				</ion-select>
+			</ion-item>
+		</ion-list>
+		<button ion-button clear block type="button" (click)="manageIngredient()">
+			Manage Ingredient
+		</button>
+		<ion-list formArrayName="ingredients">
+			<ion-item *ngFor="let igCtrl of recipeForm.get('ingredients').controls; let i = index">
+				<ion-label floating>Ingredient Name</ion-label>
+				<ion-input [formControlName]="i" type="text"></ion-input>
+			</ion-item>
+		</ion-list>
+		<button ion-button block type="submit" [disabled]="!recipeForm.valid">
+			{{editMode}} Recipe
+		</button>
+	</form>
 </ion-content>

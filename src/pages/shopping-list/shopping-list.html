@@ -29,4 +29,16 @@
 			Add Ingredient
 		</button>
 	</form>
+	<ion-card>
+		<ion-card-header>
+			Item-List
+		</ion-card-header>
+		<ion-card-content *ngFor="let item of IngredientList; let i = index" (click)="onCheckIngredient(i)">
+			<ion-icon ios="ios-color-palette" md="md-color-palette"></ion-icon>
+			<h3>Name: {{item.name}}</h3>
+			<ion-note>
+				Amount: {{item.amount}}
+			</ion-note>
+		</ion-card-content>
+	</ion-card>
 </ion-content>

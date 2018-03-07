@@ -16,7 +16,6 @@ export class ShoppinglistProvider {
 
 	addSingleIngredient(name: string, amount: number) {
 		this.IngreArr.push(new Ingredient(name, amount));
-		console.log('19 -- ', this.IngreArr);
 	}
 
 	addMultiIngredient(ingredients: Ingredient[]) {
