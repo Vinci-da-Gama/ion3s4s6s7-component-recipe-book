@@ -3,6 +3,7 @@ import { Platform, NavController, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { SigninSignupPage } from '../pages/signin-signup/signin-signup';
 import { CompoNativeTabsPage } from '../pages/compo-native-tabs/compo-native-tabs';
 import { RecipesTabsSubrootPage } from '../pages/recipes-tabs-subroot/recipes-tabs-subroot';
 
@@ -12,8 +13,10 @@ import { RecipesTabsSubrootPage } from '../pages/recipes-tabs-subroot/recipes-ta
 export class ComponentsRceipeBook {
 
 	@ViewChild('appMenuNavContent') nav: NavController;
+	private siuPage: any = SigninSignupPage;
 	private compoNatiPlugPage: any = CompoNativeTabsPage;
 	private recipesPage: any = RecipesTabsSubrootPage;
+	private siul: Array<String> = ['Signin', 'Signup', 'Logout'];
 
 	constructor(
 		private platform: Platform,

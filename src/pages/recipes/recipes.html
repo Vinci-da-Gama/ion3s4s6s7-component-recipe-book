@@ -10,7 +10,18 @@
 	</ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-	recipes...
+	<ion-list>
+		<button ion-item *ngIf="!hasRecipes" (click)="addNewRecipe()">
+			Plsase add New Recipe
+		</button>
+		<button ion-item *ngFor="let rc of recipes; let i = index;" (click)="onLoadRecipe(i, rc)">
+			<h2>
+				{{rc.title}}
+			</h2>
+			<ion-note>
+				{{rc.difficulty}}
+			</ion-note>
+		</button>
+	</ion-list>
 </ion-content>

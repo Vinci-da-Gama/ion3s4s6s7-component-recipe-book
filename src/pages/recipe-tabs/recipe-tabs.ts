@@ -21,7 +21,7 @@ export class RecipeTabsPage {
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad RecipeTabsPage');
-		this.recipeTabsRef.select(0);
+		this.recipeTabsRef.select(1);
 	}
 
 }

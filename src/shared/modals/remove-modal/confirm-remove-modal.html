@@ -1,0 +1,30 @@
+<ion-content padding>
+	<ion-card>
+		<ion-card-header>
+			Confirm Delete Recipe
+		</ion-card-header>
+		<ion-card-content>
+			<ion-item-divider>
+				{{recipeTitle}}
+			</ion-item-divider>
+			<p>
+				{{recipeDescription}}
+			</p>
+			<ion-note>
+				{{recipeDifficulty}}
+			</ion-note>
+		</ion-card-content>
+	</ion-card>
+	<ion-row>
+		<ion-col class="col-6">
+			<button ion-button full (click)="onRemove(true)">
+				Remove
+			</button>
+		</ion-col>
+		<ion-col class="col-6">
+			<button ion-button outline block color="danger" (click)="onClose()">
+				Close
+			</button>
+		</ion-col>
+	</ion-row>
+</ion-content>

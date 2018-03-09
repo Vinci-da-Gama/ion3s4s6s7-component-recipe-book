@@ -11,6 +11,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 
+import { SigninSignupPage } from '../pages/signin-signup/signin-signup';
 import { ComponentsRceipeBook } from './app.component';
 import { RecipesTabsSubrootPage } from '../pages/recipes-tabs-subroot/recipes-tabs-subroot';
 import { NativePlugsPage } from '../pages/native-plugs/native-plugs';
@@ -23,15 +24,19 @@ import { ShoppingListPage } from '../pages/shopping-list/shopping-list';
 import { RecipesPage } from '../pages/recipes/recipes';
 import { RecipeDetailsPage } from '../pages/recipe-details/recipe-details';
 import { EditRecipePage } from '../pages/edit-recipe/edit-recipe';
+import { ConfirmRemoveModal } from '../shared/modals/remove-modal/confirm-remove-modal';
 
 import { RightmenuButtonDirective } from '../shared/directives/rightmenu-button/rightmenu-button';
 import { GridComps } from '../shared/directives/grid-comps/grid-comps';
 import { FormProvider } from '../shared/providers/form-provider';
 import { ShoppinglistProvider } from '../shared/providers/shoppinglist-provider';
 import { RecipesProvider } from '../shared/providers/recipes-provider';
+import { ToastProvider } from '../shared/providers/toast-provider';
+import { IngredientProvider } from '../shared/providers/ingredient-provider';
 
 @NgModule({
 	declarations: [
+		SigninSignupPage,
 		ComponentsRceipeBook,
 		RecipesTabsSubrootPage,
 		NativePlugsPage,
@@ -43,6 +48,7 @@ import { RecipesProvider } from '../shared/providers/recipes-provider';
 		RecipesPage,
 		RecipeDetailsPage,
 		EditRecipePage,
+		ConfirmRemoveModal,
 		RightmenuButtonDirective,
 		GridComps
 	],
@@ -54,6 +60,7 @@ import { RecipesProvider } from '../shared/providers/recipes-provider';
 	],
 	bootstrap: [IonicApp],
 	entryComponents: [
+		SigninSignupPage,
 		ComponentsRceipeBook,
 		RecipesTabsSubrootPage,
 		NativePlugsPage,
@@ -64,7 +71,8 @@ import { RecipesProvider } from '../shared/providers/recipes-provider';
 		ShoppingListPage,
 		RecipesPage,
 		RecipeDetailsPage,
-		EditRecipePage
+		EditRecipePage,
+		ConfirmRemoveModal
 	],
 	providers: [
 		StatusBar,
@@ -76,7 +84,9 @@ import { RecipesProvider } from '../shared/providers/recipes-provider';
 		{ provide: ErrorHandler, useClass: IonicErrorHandler },
 		FormProvider,
 		ShoppinglistProvider,
-		RecipesProvider
+		RecipesProvider,
+		ToastProvider,
+		IngredientProvider
 	]
 })
 export class AppModule { }

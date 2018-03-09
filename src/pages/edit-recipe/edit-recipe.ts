@@ -4,10 +4,14 @@ import {
 	NavController,
 	NavParams,
 	ActionSheetController,
-	AlertController,
-	ToastController
+	AlertController
 } from 'ionic-angular';
 import { FormatWidth } from '@angular/common';
+import { ToastProvider } from '../../shared/providers/toast-provider';
+import { RecipesProvider } from '../../shared/providers/recipes-provider';
+import { IngredientProvider } from '../../shared/providers/ingredient-provider';
+import { Ingredient } from 'shared/models/ingredient';
+import { RecipeClass } from 'shared/models/recipe';
 
 @Component({
 	selector: 'page-edit-recipe',
@@ -18,27 +22,56 @@ export class EditRecipePage implements OnInit {
 	private editMode: String = '';
 	private selectOptions: Array<string> = ['easy', 'medium', 'hard'];
 	private recipeForm: FormGroup;
+	private targetRecipe: RecipeClass;
+	private index: number;
 
 	constructor(
 		private navCtrl: NavController,
 		private navParams: NavParams,
 		private aSheetCtrl: ActionSheetController,
 		private alertCtrl: AlertController,
-		private toastCtrl: ToastController
+		private toastProvider: ToastProvider,
+		private recipeProvider: RecipesProvider,
+		private ingredientProvider: IngredientProvider
 	) { }
 
 	ngOnInit() {
 		this.editMode = this.navParams.get('mode');
+		this.toastProvider.toastWithMsg(`Mode is: ${this.editMode} Recipe.`);
+		switch (this.editMode) {
+			case 'Edit':
+				this.targetRecipe = this.navParams.get('recipe');
+				this.index = this.navParams.get('index');
+				break;
+			default:
+				break;
+		}
 		this.initRecipeFormGroup();
-		console.log('22 -- Edit Mode is: ', this.editMode);
 	}
 
 	private initRecipeFormGroup() {
+		let title = null;
+		let description = null;
+		let difficulty = 'medium';
+		let ingredients = [];
+		if (this.editMode === 'Edit') {
+			title = this.targetRecipe.title;
+			description = this.targetRecipe.description;
+			difficulty = this.targetRecipe.difficulty;
+			const passInIngres = this.targetRecipe.ingredients;
+			if (passInIngres.length > 0) {
+				for (const ingredient of passInIngres) {
+					ingredients.push(new FormControl(ingredient.name, Validators.required));
+				}
+			} else {
+				ingredients = [];
+			}
+		}
 		this.recipeForm = new FormGroup({
-			'title': new FormControl(null, Validators.required),
-			'description': new FormControl(null, Validators.required),
-			'difficulty': new FormControl('medium', Validators.required),
-			'ingredients': new FormArray([])
+			'title': new FormControl(title, Validators.required),
+			'description': new FormControl(description, Validators.required),
+			'difficulty': new FormControl(difficulty, Validators.required),
+			'ingredients': new FormArray(ingredients)
 		});
 	}
 
@@ -54,30 +87,20 @@ export class EditRecipePage implements OnInit {
 			],
 			buttons: [
 				{
-					text: 'Cancle',
-					role: 'cancle'
-				},
-				{
 					text: 'Add Ingredient',
 					handler: (data) => {
 						if (data.name.trim() === '' || data.name === null) {
-							const noNameToast = this.toastCtrl.create({
-								message: 'Pls input valid value.',
-								duration: 1500,
-								position: 'bottom'
-							});
-							noNameToast.present();
+							this.toastProvider.toastWithMsg('Pls input valid value.');
 							return;
 						}
 						const ingredientArr = (<FormArray>this.recipeForm.get('ingredients'));
 						ingredientArr.push(new FormControl(data.name, Validators.required));
-						const addIngreToast = this.toastCtrl.create({
-							message: 'Ingredient is added.',
-							duration: 1500,
-							position: 'bottom'
-						});
-						addIngreToast.present();
+						this.toastProvider.toastWithMsg('Ingredient is added.');
 					}
+				},
+				{
+					text: 'Cancle',
+					role: 'cancle'
 				}
 			]
 		});
@@ -98,22 +121,39 @@ export class EditRecipePage implements OnInit {
 					handler: () => {
 						const ingreArr: FormArray = (<FormArray>this.recipeForm.get('ingredients'));
 						if (ingreArr.length > 0) {
-							for (let i = ingreArr.length - 1; i >= 0; i--) {
-								ingreArr.removeAt(i);
-							}
-							const removeIngredientsToast = this.toastCtrl.create({
-								message: 'Ingredients are removed.',
-								duration: 1500,
-								position: 'bottom'
+							const removeIngresAlert = this.alertCtrl.create({
+								title: 'Are u sure?',
+								subTitle: 'Are you sure to remove ingredients?',
+								buttons: [
+									{
+										text: 'Disagree',
+										role: 'cancle',
+										handler: () => {
+											this.ingredientProvider.doRemoveIngredients(false);
+										}
+									},
+									{
+										text: 'Agree',
+										handler: () => {
+											this.ingredientProvider.doRemoveIngredients(true);
+										}
+									}
+								]
 							});
-							removeIngredientsToast.present();
+							removeIngresAlert.present();
+							removeIngresAlert.onDidDismiss(() => {
+								const isRemoveable: Boolean = this.ingredientProvider.isRemoveIngredient;
+								if (isRemoveable) {
+									for (let i = ingreArr.length - 1; i >= 0; i--) {
+										ingreArr.removeAt(i);
+									}
+									this.toastProvider.toastWithMsg('Ingredients are removed.');
+								} else {
+									this.toastProvider.toastWithMsg('Keep All Ingredients.');
+								}
+							});
 						} else {
-							const emptyListToast = this.toastCtrl.create({
-								message: 'Ingredient list is empty.',
-								duration: 1500,
-								position: 'bottom'
-							});
-							emptyListToast.present();
+							this.toastProvider.toastWithMsg('Ingredient list is empty..');
 						}
 					}
 				},
@@ -127,8 +167,27 @@ export class EditRecipePage implements OnInit {
 	}
 
 	onRecipeSubmit() {
-		console.log('34 -- recipe form: ', this.recipeForm);
+		const fVal = this.recipeForm.value;
+		let ingres: Ingredient[] = [];
+		console.log('133 -- form value: ', fVal);
+		if (fVal.ingredients.length > 0) {
+			ingres = fVal.ingredients.map((ingName: string) => {
+				return {
+					name: ingName,
+					amount: 1
+				}
+			});
+		}
+		switch (this.editMode) {
+			case 'Edit':
+				this.recipeProvider.updateRecipe(this.index, fVal.title, fVal.description, fVal.difficulty, ingres);
+				break;
+			default:
+				this.recipeProvider.addRecipe(fVal.title, fVal.description, fVal.difficulty, ingres);
+				break;
+		}
 		this.recipeForm.reset();
+		this.navCtrl.popToRoot();
 	}
 
 }
