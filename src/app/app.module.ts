@@ -33,6 +33,8 @@ import { ShoppinglistProvider } from '../shared/providers/shoppinglist-provider'
 import { RecipesProvider } from '../shared/providers/recipes-provider';
 import { ToastProvider } from '../shared/providers/toast-provider';
 import { IngredientProvider } from '../shared/providers/ingredient-provider';
+import { ErrorhandlerProvider } from '../shared/providers/errorhandler';
+import { AuthUserService } from '../services/auth-user';
 
 @NgModule({
 	declarations: [
@@ -86,7 +88,9 @@ import { IngredientProvider } from '../shared/providers/ingredient-provider';
 		ShoppinglistProvider,
 		RecipesProvider,
 		ToastProvider,
-		IngredientProvider
+		IngredientProvider,
+		AuthUserService,
+		ErrorhandlerProvider
 	]
 })
 export class AppModule { }

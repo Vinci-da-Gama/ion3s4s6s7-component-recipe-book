@@ -11,7 +11,23 @@
 			{{siulMode}} Form
 		</ion-card-header>
 		<ion-card-content>
-			form here...
+			<form #suilForm="ngForm" (ngSubmit)="onUserSubmit(suilForm)">
+				<ion-item>
+					<ion-label fixed>
+						Email:
+					</ion-label>
+					<ion-input type="email" name="useremail" placeholder="sth@sth.com" ngModel email="true" required></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label fixed>
+						Password:
+					</ion-label>
+					<ion-input type="password" name="userpassword" placeholder="xxx" ngModel required [minlength]="6"></ion-input>
+				</ion-item>
+				<button ion-button full block type="submit" [disabled]="!suilForm.valid">
+					{{siulMode}}
+				</button>
+			</form>
 		</ion-card-content>
 	</ion-card>
 </ion-content>
