@@ -9,13 +9,13 @@
 	</ion-header>
 	<ion-content>
 		<ion-list>
-			<button ion-item ion-left (click)="onLoadPage(siuPage)">
-				<ion-icon name="log-in"></ion-icon>
-				Sign In
-			</button>
-			<button ion-item ion-left (click)="onLoadPage(siuPage)">
+			<button ion-item ion-left (click)="onLoadPage(siuPage, SuTitleObj);">
 				<ion-icon ios="ios-finger-print" md="md-finger-print"></ion-icon>
 				Sign Up
+			</button>
+			<button ion-item ion-left (click)="onLoadPage(siuPage, SiTitleObj);">
+				<ion-icon name="log-in"></ion-icon>
+				Sign In
 			</button>
 			<button ion-item (click)="onLoadPage(recipesPage)">
 				<ion-icon name="settings" item-right></ion-icon>
@@ -25,7 +25,7 @@
 				<ion-icon name="play" item-left></ion-icon>
 				Native Plugings
 			</button>
-			<button ion-item icon-right (click)="onLoadPage(siuPage)">
+			<button ion-item icon-right (click)="onLoadPage(siuPage, LogoutTitleObj)">
 				Log Out
 				<ion-icon name="unlock"></ion-icon>
 			</button>

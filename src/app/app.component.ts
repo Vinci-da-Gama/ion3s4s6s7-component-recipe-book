@@ -16,7 +16,9 @@ export class ComponentsRceipeBook {
 	private siuPage: any = SigninSignupPage;
 	private compoNatiPlugPage: any = CompoNativeTabsPage;
 	private recipesPage: any = RecipesTabsSubrootPage;
-	private siul: Array<String> = ['Signin', 'Signup', 'Logout'];
+	private SuTitleObj = { title: 'Sign-Up' };
+	private SiTitleObj = { title: 'Sign-In' };
+	private LogoutTitleObj = { title: 'Log-Out' };
 
 	constructor(
 		private platform: Platform,
@@ -32,8 +34,8 @@ export class ComponentsRceipeBook {
 		});
 	}
 
-	onLoadPage(page: any) {
-		this.nav.setRoot(page);
+	onLoadPage(page: any, siulTitle) {
+		this.nav.setRoot(page, siulTitle);
 		this.menuCtrl.close();
 	}
 }

@@ -7,7 +7,7 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SigninSignupPage implements OnInit {
 
-	private siulMode: String = '';
+	private siulMode: string;
 
 	constructor(
 		private navCtrl: NavController,
@@ -15,8 +15,7 @@ export class SigninSignupPage implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.siulMode = this.navParams.data;
-		console.log('19 -- : ', this.siulMode);
+		this.siulMode = this.navParams.get('title') ? this.navParams.get('title') : 'Sign-Up';
 	}
 
 }
