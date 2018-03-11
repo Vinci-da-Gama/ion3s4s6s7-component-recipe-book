@@ -1,6 +1,11 @@
 <ion-header>
 	<ion-navbar>
 		<rightmenu-button></rightmenu-button>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="onShowOpts($event)">
+				<ion-icon name="more"></ion-icon>
+			</button>
+		</ion-buttons>
 		<ion-title>shopping-list</ion-title>
 	</ion-navbar>
 </ion-header>

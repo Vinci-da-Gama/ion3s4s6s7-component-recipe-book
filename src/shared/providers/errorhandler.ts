@@ -22,9 +22,8 @@ export class ErrorhandlerProvider {
 		errorAlert.present();
 	}
 
-	handleError(error, alertTitleBtn) {
-		console.log('27 -- alertTitleBtn ', alertTitleBtn);
-		console.log('28 -- err ', error);
+	private handleError(error, alertObj) {
+		console.log('26 -- err ', error);
 		// In a real world app, you might use a remote logging infrastructure
 		let errMsg: String = '';
 		if (error instanceof ErrorEvent) {
@@ -33,12 +32,21 @@ export class ErrorhandlerProvider {
 			errMsg = `Client side or network error -- ${error.filename || ''} ${err}`;
 		} else {
 			// backend or server side error.
-			errMsg = `Backend Return error -- ${error.code} - ${error.message ? error.message : error.toString()}.`;
+			errMsg = `Backend Return error -- ${error.code} --> ${error.message ? error.message : error.toString()}.`;
 		}
 		console.error(errMsg);
-		alertTitleBtn['message'] = errMsg;
-		this.presentErrorAlert(alertTitleBtn);
+		alertObj['message'] = errMsg;
+		this.presentErrorAlert(alertObj);
 		return Observable.throw(errMsg);
 	};
+
+	handleException(err, action, spinnerLoading) {
+		const alertTitleBtnTxt = {
+			title: `${action} Error`,
+			btnTxt: 'I see'
+		};
+		this.handleError(err, alertTitleBtnTxt);
+		spinnerLoading.dismiss();
+	}
 
 }

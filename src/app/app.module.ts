@@ -21,6 +21,7 @@ import { CompoNativeTabsPage } from '../pages/compo-native-tabs/compo-native-tab
 import { CnpTabsPage } from '../pages/cnp-tabs/cnp-tabs';
 import { RecipeTabsPage } from '../pages/recipe-tabs/recipe-tabs';
 import { ShoppingListPage } from '../pages/shopping-list/shopping-list';
+import { StoreLoadPage } from '../pages/storeload/storeloadpage';
 import { RecipesPage } from '../pages/recipes/recipes';
 import { RecipeDetailsPage } from '../pages/recipe-details/recipe-details';
 import { EditRecipePage } from '../pages/edit-recipe/edit-recipe';
@@ -28,13 +29,13 @@ import { ConfirmRemoveModal } from '../shared/modals/remove-modal/confirm-remove
 
 import { RightmenuButtonDirective } from '../shared/directives/rightmenu-button/rightmenu-button';
 import { GridComps } from '../shared/directives/grid-comps/grid-comps';
-import { FormProvider } from '../shared/providers/form-provider';
 import { ShoppinglistProvider } from '../shared/providers/shoppinglist-provider';
 import { RecipesProvider } from '../shared/providers/recipes-provider';
 import { ToastProvider } from '../shared/providers/toast-provider';
 import { IngredientProvider } from '../shared/providers/ingredient-provider';
 import { ErrorhandlerProvider } from '../shared/providers/errorhandler';
 import { AuthUserService } from '../services/auth-user';
+import { DbOperationsService } from '../services/dbopts-service';
 
 @NgModule({
 	declarations: [
@@ -47,6 +48,7 @@ import { AuthUserService } from '../services/auth-user';
 		CnpTabsPage,
 		RecipeTabsPage,
 		ShoppingListPage,
+		StoreLoadPage,
 		RecipesPage,
 		RecipeDetailsPage,
 		EditRecipePage,
@@ -71,6 +73,7 @@ import { AuthUserService } from '../services/auth-user';
 		CnpTabsPage,
 		RecipeTabsPage,
 		ShoppingListPage,
+		StoreLoadPage,
 		RecipesPage,
 		RecipeDetailsPage,
 		EditRecipePage,
@@ -84,13 +87,13 @@ import { AuthUserService } from '../services/auth-user';
 		File,
 		{ provide: APP_BASE_HREF, useValue: '/' },
 		{ provide: ErrorHandler, useClass: IonicErrorHandler },
-		FormProvider,
 		ShoppinglistProvider,
 		RecipesProvider,
 		ToastProvider,
 		IngredientProvider,
+		ErrorhandlerProvider,
 		AuthUserService,
-		ErrorhandlerProvider
+		DbOperationsService
 	]
 })
 export class AppModule { }

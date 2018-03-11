@@ -21,6 +21,10 @@ export class RecipesProvider {
 		this.toastProvider.toastWithMsg('Recipe is added.');
 	}
 
+	addMultiRecipes(recipes: RecipeClass[]) {
+		this.recipeList = recipes;
+	}
+
 	getSigRecipe(idx: number): RecipeClass {
 		return this.recipeList[idx];
 	}
@@ -45,6 +49,10 @@ export class RecipesProvider {
 		} else {
 			this.toastProvider.toastWithMsg('No Any Recipe...');
 		}
+	}
+
+	clearRecipeList() {
+		this.recipeList = [];
 	}
 
 }

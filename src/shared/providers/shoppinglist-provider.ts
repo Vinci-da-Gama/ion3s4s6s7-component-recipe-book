@@ -31,7 +31,13 @@ export class ShoppinglistProvider {
 	}
 
 	removeIngredient(index: number) {
+		console.log('34 -- before delete: ', this.IngreArr);
 		this.IngreArr.splice(index, 1);
+		console.log('36 -- after delete: ', this.IngreArr);
+	}
+
+	clearShoppingList() {
+		this.IngreArr = [];
 	}
 
 }

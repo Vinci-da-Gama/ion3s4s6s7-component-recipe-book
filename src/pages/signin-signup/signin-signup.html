@@ -1,11 +1,11 @@
-<ion-header>
+<ion-header *ngIf="!isAuthenUser">
 	<ion-navbar>
 		<rightmenu-button></rightmenu-button>
 		<ion-title>{{siulMode}}</ion-title>
 	</ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding *ngIf="!isAuthenUser">
 	<ion-card>
 		<ion-card-header>
 			{{siulMode}} Form
@@ -22,7 +22,7 @@
 					<ion-label fixed>
 						Password:
 					</ion-label>
-					<ion-input type="password" name="userpassword" placeholder="xxx" ngModel required [minlength]="6"></ion-input>
+					<ion-input type="password" name="userpassword" placeholder="xxxxxx" ngModel required [minlength]="6"></ion-input>
 				</ion-item>
 				<button ion-button full block type="submit" [disabled]="!suilForm.valid">
 					{{siulMode}}
@@ -30,4 +30,22 @@
 			</form>
 		</ion-card-content>
 	</ion-card>
+</ion-content>
+
+
+<ion-header *ngIf="isAuthenUser">
+	<ion-navbar>
+		<rightmenu-button></rightmenu-button>
+		<ion-title>Welcome</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding *ngIf="isAuthenUser">
+	<ion-grid>
+		<ion-row class="mt-3em">
+			<ion-col>
+				Welcome haha... This solution is pretty bad -- tmp solution only.
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 </ion-content>
